@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FE_QUIZ - Đăng nhập</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz - Đăng nhập</h1>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" id="username" name="username" required minlength="4" placeholder="Nhập username" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" required minlength="6" placeholder="Nhập mật khẩu" />
+      </div>
+
+      <div class="form-group">
+        <label for="otp">Mã OTP (nếu có)</label>
+        <input type="number" id="otp" name="otp" placeholder="Nhập OTP (tùy chọn)" />
+      </div>
+
+      <button type="submit">Đăng nhập</button>
+    </form>
+
+    <p class="hint">Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+
+    <div id="loginMessage" class="message"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const otpRaw = document.getElementById('otp').value;
+      const otp = otpRaw ? parseInt(otpRaw, 10) : 0;
+
+      setMessage('loginMessage', 'Đang đăng nhập...', 'info');
+
+      try {
+        const res = await login(username, password, otp);
+        if (res.ok) {
+          setMessage('loginMessage', 'Đăng nhập thành công! Token đã được lưu.', 'success');
+          // Điều hướng tạm thời về chính trang này hoặc trang dashboard sau này
+          // location.href = 'dashboard.html';
+        } else {
+          setMessage('loginMessage', res.message || 'Đăng nhập thất bại', 'error');
+        }
+      } catch (err) {
+        setMessage('loginMessage', err.message || 'Có lỗi xảy ra', 'error');
+      }
+    });
+  </script>
+</body>
+</html>

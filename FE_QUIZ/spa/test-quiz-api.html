@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Quiz API</title>
+</head>
+
+<body>
+    <h1>Test Quiz API</h1>
+    <button onclick="testGetSubjects()">Test GET Subjects</button>
+    <button onclick="testCreateSubject()">Test CREATE Subject</button>
+    <div id="result"></div>
+
+    <script>
+        const token = localStorage.getItem('access_token') || 'test-token';
+
+        async function testGetSubjects() {
+            try {
+                const response = await fetch('http://35.208.197.225:8080/api/v1/quiz/admin/quiz/subjects', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = document.getElementById('result');
+                result.innerHTML = `
+                    <h3>GET Subjects Response:</h3>
+                    <p>Status: ${response.status}</p>
+                    <p>Content-Type: ${response.headers.get('content-type')}</p>
+                    <p>Response: ${await response.text()}</p>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testCreateSubject() {
+            try {
+                const response = await fetch('http://35.208.197.225:8080/api/v1/quiz/admin/quiz/subjects', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: 'Hóa học' })
+                });
+
+                const result = document.getElementById('result');
+                result.innerHTML = `
+                    <h3>CREATE Subject Response:</h3>
+                    <p>Status: ${response.status}</p>
+                    <p>Content-Type: ${response.headers.get('content-type')}</p>
+                    <p>Response: ${await response.text()}</p>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

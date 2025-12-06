@@ -1,0 +1,220 @@
+/* Dark Mode Styles for Teacher Settings - Using Tailwind Classes */
+
+/* Ensure dark mode is applied to the root */
+.dark {
+  color-scheme: dark;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Dark mode for custom components */
+.dark .teacher-settings-modal {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .teacher-settings-sidebar {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+.dark .teacher-settings-content {
+  background-color: #1f2937;
+}
+
+/* Dark mode for status indicators */
+.dark .status-online {
+  background-color: #065f46;
+  color: #10b981;
+}
+
+.dark .status-offline {
+  background-color: #374151;
+  color: #9ca3af;
+}
+
+/* Dark mode for login history items */
+.dark .login-history-item {
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
+.dark .login-history-item:hover {
+  background-color: #4b5563;
+}
+
+/* Dark mode for account deletion section */
+.dark .account-deletion-section {
+  background-color: #7f1d1d;
+  border-color: #dc2626;
+}
+
+.dark .account-deletion-section h4 {
+  color: #fca5a5;
+}
+
+.dark .account-deletion-section p {
+  color: #f87171;
+}
+
+/* Dark mode for avatar upload section */
+.dark .avatar-upload-section {
+  background-color: #374151;
+  border-color: #6b7280;
+}
+
+/* Dark mode for form sections */
+.dark .form-section {
+  background-color: #1f2937;
+}
+
+.dark .form-section h3 {
+  color: #f9fafb;
+}
+
+.dark .form-section h4 {
+  color: #e5e7eb;
+}
+
+.dark .form-section label {
+  color: #d1d5db;
+}
+
+.dark .form-section p {
+  color: #9ca3af;
+}
+
+/* Dark mode for message notifications */
+.dark .message-success {
+  background-color: #065f46;
+  color: #10b981;
+  border-color: #059669;
+}
+
+.dark .message-error {
+  background-color: #7f1d1d;
+  color: #f87171;
+  border-color: #dc2626;
+}
+
+/* Dark mode for tab navigation */
+.dark .tab-button {
+  color: #9ca3af;
+}
+
+.dark .tab-button:hover {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+.dark .tab-button.active {
+  background-color: #581c87;
+  color: #c084fc;
+  border-color: #a855f7;
+}
+
+/* Dark mode for buttons */
+.dark .btn-primary {
+  background-color: #7c3aed;
+  color: white;
+}
+
+.dark .btn-primary:hover {
+  background-color: #6d28d9;
+}
+
+.dark .btn-secondary {
+  background-color: #6b7280;
+  color: white;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.dark .btn-success {
+  background-color: #059669;
+  color: white;
+}
+
+.dark .btn-success:hover {
+  background-color: #047857;
+}
+
+.dark .btn-danger {
+  background-color: #dc2626;
+  color: white;
+}
+
+.dark .btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.dark .btn-warning {
+  background-color: #ea580c;
+  color: white;
+}
+
+.dark .btn-warning:hover {
+  background-color: #c2410c;
+}
+
+/* Dark mode for input fields */
+.dark .form-input {
+  background-color: #374151;
+  border-color: #6b7280;
+  color: #f9fafb;
+}
+
+.dark .form-input:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.dark .form-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Dark mode for select elements */
+.dark .form-select {
+  background-color: #374151;
+  border-color: #6b7280;
+  color: #f9fafb;
+}
+
+.dark .form-select:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+/* Dark mode for textarea */
+.dark .form-textarea {
+  background-color: #374151;
+  border-color: #6b7280;
+  color: #f9fafb;
+}
+
+.dark .form-textarea:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.dark .form-textarea::placeholder {
+  color: #9ca3af;
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FE_QUIZ - Đăng ký</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz - Đăng ký</h1>
+
+    <form id="registerForm">
+      <div class="grid">
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" name="username" required minlength="4" placeholder="Ít nhất 4 ký tự" />
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" name="password" required minlength="6" placeholder="Ít nhất 6 ký tự" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="email@domain.com" />
+        </div>
+        <div class="form-group">
+          <label for="mssv">MSSV</label>
+          <input type="text" id="mssv" name="mssv" required minlength="6" placeholder="MSSV của bạn" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="form-group">
+          <label for="firstName">Họ</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Họ" />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Tên</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Tên" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="form-group">
+          <label for="phoneNumber">Số điện thoại</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="SĐT (tùy chọn)" />
+        </div>
+        <div class="form-group">
+          <label for="city">Thành phố</label>
+          <input type="text" id="city" name="city" placeholder="Thành phố (tùy chọn)" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="form-group">
+          <label for="dateOfBirth">Ngày sinh</label>
+          <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="dd/MM/yyyy" />
+        </div>
+        <div class="form-group">
+          <label for="gender">Giới tính</label>
+          <select id="gender" name="gender">
+            <option value="">-- Chọn --</option>
+            <option value="MALE">Nam</option>
+            <option value="FEMALE">Nữ</option>
+            <option value="OTHER">Khác</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">Đăng ký</button>
+    </form>
+
+    <p class="hint">Đã có tài khoản? <a href="index.html">Đăng nhập</a></p>
+
+    <div id="registerMessage" class="message"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const payload = {
+        username: document.getElementById('username').value.trim(),
+        password: document.getElementById('password').value,
+        email: document.getElementById('email').value.trim(),
+        mssv: document.getElementById('mssv').value.trim(),
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        phoneNumber: document.getElementById('phoneNumber').value.trim(),
+        city: document.getElementById('city').value.trim(),
+        dateOfBirth: document.getElementById('dateOfBirth').value.trim(), // định dạng dd/MM/yyyy
+        gender: document.getElementById('gender').value || null
+      };
+
+      setMessage('registerMessage', 'Đang đăng ký...', 'info');
+      try {
+        const res = await registerUser(payload);
+        if (res.ok) {
+          setMessage('registerMessage', 'Đăng ký thành công! Chuyển đến trang đăng nhập...', 'success');
+          setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        } else {
+          setMessage('registerMessage', res.message || 'Đăng ký thất bại', 'error');
+        }
+      } catch (err) {
+        setMessage('registerMessage', err.message || 'Có lỗi xảy ra', 'error');
+      }
+    });
+  </script>
+</body>
+</html>
